@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.css')}}">
+    <title>User Info</title>
+    <style>
+        .border{
+            padding-left: 10px;
+            border: solid black 3px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    
+<div class="container">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+        <h1 class="display-1">User {{user[0].id}}</h1>
+        <a href="/users">Home</a>
+    </div>
+    <div class="border">
+        <h3>Full Name: {{user[0].first_name}} {{user[0].last_name}}</h3>
+        <h3>Email: {{user[0].email}}</h3>
+        <h3>Created On: {{user[0].created_at}}</h3>
+        <h3>Last Updated On: {{user[0].updated_at}}</h3>
+    </div>
+    <h4><a href="/users/{{user[0].id}}/edit" class="display-4">Edit</a> | <a href="/users/{{user[0].id}}/destroy" class="display-4">Delete</a></h4>
+</div>
+</body>
+</html>

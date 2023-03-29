@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.css')}}">
+    <title>Edit User</title>
+</head>
+<body>
+    <div class="container">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+            <h1 class="display-1">Edit User {{user[0].id}}</h1>
+            <a href="/users">Home</a>
+        </div>
+        <form action="/users/{{user[0].id}}/edit/submit" method="post">
+            <label for="fname_new">First Name:</label>
+            <input type="text" class="form-control" name="fname_new" value="{{user[0].first_name}}">
+            <label for="lname_new">Last Name:</label>
+            <input type="text" class="form-control" name="lname_new" value="{{user[0].last_name}}">
+            <label for="email_new">Email address:</label>
+            <input type="text" class="form-control" name="email_new" value="{{user[0].email}}">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <button type="submit" class="btn btn-primary">Update</button>
+                <a href="/users/{{user[0].id}}">Show User</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

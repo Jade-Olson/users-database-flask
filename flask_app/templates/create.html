@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.css')}}">
+    <title>Create User</title>
+</head>
+<body>
+<div class="container">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+        <h1 class="display-1">Create User</h1>
+        <a href="/users">Home</a>
+    </div>
+    <div style="color:red">
+        
+        {% with messages = get_flashed_messages() %}
+            {% if messages: %}
+                {% for message in messages: %}
+                    <p>{{message}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+    </div>
+    <form action="/new_user" method="post">
+        <label for="fname">First Name:</label>
+        <input type="text" class="form-control" name="fname" placeholder="First Name" value="{{session['fname']}}">
+        <label for="lname">Last Name:</label>
+        <input type="text" class="form-control" name="lname" placeholder="Last Name" value="{{session['lname']}}">
+        <label for="email">Email address:</label>
+        <input type="text" class="form-control" name="email" placeholder="Enter email" value="{{session['email']}}">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+</body>
+</html>
